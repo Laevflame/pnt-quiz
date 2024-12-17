@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: pnt-quiz
+spec:
+  type: NodePort # Atau LoadBalancer jika di cloud provider yang mendukungnya.
+  ports:
+    - port: 80 # Port yang digunakan oleh service.
+      targetPort: 80 # Port di dalam pod.
+      protocol: TCP
+  selector:
+    app: frontend
